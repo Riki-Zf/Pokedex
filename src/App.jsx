@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import SideNav from "./compenents/SideNav";
 import Header from "./compenents/Header";
 import PokeCard from "./compenents/PokeCard";
 
 const App = () => {
+  const [selectedPokemon, setSelectedPokemon] = useState(0);
+
   return (
     <>
       <Header />
-      <SideNav />
-      <PokeCard />
+      <SideNav selectedPokemon={selectedPokemon} setSelectedPokemon={selectedPokemon} />
+      <PokeCard selectedPokemon={selectedPokemon} />
     </>
   );
 };

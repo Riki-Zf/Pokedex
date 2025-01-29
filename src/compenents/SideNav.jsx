@@ -8,10 +8,10 @@ const SideNav = () => {
         <h1 className="text-gradient">Pokédex</h1>
       </div>
       <input />
-      {first151Pokemon.map((pokemon, indexPokemon) => {
+      {first151Pokemon.map((pokemon, pokemonIndex) => {
         return (
-          <button className={`nav-card`}>
-            <p>{getFullPokedexNumber(indexPokemon)}</p>
+          <button key={pokemonIndex} className={`nav-card`}>
+            <p>{getFullPokedexNumber(pokemonIndex)}</p>
             <p>{pokemon}</p>
           </button>
         );
