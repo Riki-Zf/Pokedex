@@ -9,7 +9,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <SideNav selectedPokemon={selectedPokemon} setSelectedPokemon={selectedPokemon} />
+      <SideNav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} />
       <PokeCard selectedPokemon={selectedPokemon} />
     </>
   );

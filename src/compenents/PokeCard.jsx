@@ -7,7 +7,17 @@ const PokeCard = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const { name, height, abilities, stats, types, moves, spirites } = data || {};
+  const { name, height, abilities, stats, types, moves, sprites } = data || {};
+
+  const imgList = Object.keys(sprites || {}).filter((val) => {
+    if (!sprites[val]) {
+      return false;
+    }
+    if (["versions", "other"].includes(val)) {
+      return false;
+    }
+    return true;
+  });
 
   useEffect(() => {
     //if laoding, exit logic
@@ -66,8 +76,37 @@ const PokeCard = (props) => {
       </div>
 
       <div className="type-container">
-        {types.map((type, typeIndex) => {
-          return <TypeCars key={typeIndex} type={type} />;
+        {types.map((typeObj, typeIndex) => {
+          return <TypeCars key={typeIndex} type={typeObj?.type?.name} />;
+        })}
+      </div>
+      <img className="default-img" src={"/pokemon/" + getFullPokedexNumber(selectedPokemon) + ".png"} alt={`${name}-large-img`} />
+      <div className="img-container">
+        {imgList.map((spriteUrl, spriteIndex) => {
+          const imgUrl = sprites[spriteUrl];
+          return <img key={spriteIndex} src={imgUrl} alt={`${name}-img-${spriteUrl}`} />;
+        })}
+      </div>
+      <h3>Stats</h3>
+      <div className="stats-card">
+        {stats.map((statObj, statIndex) => {
+          const { stat, base_stat } = statObj;
+          return (
+            <div key={statIndex} className="stat-item">
+              <p>{stat?.name.replaceAll("-", " ")}</p>
+              <h4>{base_stat}</h4>
+            </div>
+          );
+        })}
+      </div>
+      <h3>Moves</h3>
+      <div className="pokemon-move-grid">
+        {moves.map((moveObj, moveIndex) => {
+          return (
+            <button className="button-cars pokemon-move" key={moveIndex} onClick={() => {}}>
+              <p>{moveObj?.move?.name.replaceAll("-", " ")}</p>
+            </button>
+          );
         })}
       </div>
     </div>
