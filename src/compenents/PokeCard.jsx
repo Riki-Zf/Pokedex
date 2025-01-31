@@ -35,7 +35,7 @@ const PokeCard = (props) => {
 
     if (move in c) {
       setSkill(c[move]);
-      console.log("found move on chace");
+      console.log("found move in chace");
       return;
     }
 
@@ -77,7 +77,7 @@ const PokeCard = (props) => {
     if (selectedPokemon in cache) {
       //read from cache
       setData(cache[selectedPokemon]);
-      console.log("found pokemon on cache");
+      console.log("found pokemon in cache");
       return;
     }
     //we passsed all the cache stuff to no avail and now need to fetch data from the API
@@ -90,7 +90,7 @@ const PokeCard = (props) => {
         const res = await fetch(finalUrl);
         const pokemonData = await res.json();
         setData(pokemonData);
-        console.log("fetch pokemon data");
+        console.log("fetched pokemon data");
         cache[selectedPokemon] = pokemonData;
         localStorage.setItem("pokedex", JSON.stringify(cache));
       } catch (err) {
@@ -167,7 +167,7 @@ const PokeCard = (props) => {
               className="button-cars pokemon-move"
               key={moveIndex}
               onClick={() => {
-                fetchMoveData(moveObj?.move?.url);
+                fetchMoveData(moveObj?.move?.name, moveObj?.move?.url);
               }}
             >
               <p>{moveObj?.move?.name.replaceAll("-", " ")}</p>
