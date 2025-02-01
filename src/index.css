@@ -93,7 +93,6 @@ h3 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0;
   border-radius: 0.5rem;
   width: 100%;
   padding: 0.25rem 0.5rem;
@@ -107,7 +106,7 @@ h3 {
 
 .nav-card-selected {
   background: var(--background-muted);
-  border: 1px solid (--border-primary);
+  border: 1px solid var(--border-primary);
 }
 
 .nav-card p:first-of-type {

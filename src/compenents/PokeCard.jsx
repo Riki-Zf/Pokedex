@@ -122,11 +122,11 @@ const PokeCard = (props) => {
         >
           <div>
             <h6>Name</h6>
-            <h2>Name</h2>
+            <h2 className="skill-name">{skil.name.replaceAll("-", " ")}</h2>
           </div>
           <div>
             <h6>Description</h6>
-            <p></p>
+            <p>{skil.description}</p>
           </div>
         </Modal>
       )}
